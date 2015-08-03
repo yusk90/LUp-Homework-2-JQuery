@@ -1,0 +1,43 @@
+p {
+    margin: 3px 5px;
+}
+input {
+    margin-bottom: 5px;
+}
+.error,
+#container.error {
+    background: rgba(255, 0, 0, 0.1);
+    border: 2px solid rgba(255, 0, 0, 0.49);
+}
+#container {
+    margin-bottom: 15px;
+    max-width: 400px;
+    height: 150px;
+    overflow: auto;
+}
+table {
+    border-collapse: collapse;
+    margin-bottom: 5px;
+}
+table td {
+    font-size: 1.2em;
+    border: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+}
+table tr:nth-child(2n) {
+    color: #000;
+    background-color: #EAF2D3;
+}
+.form-wrapper {
+    margin: 15px auto;
+    max-width: 400px;
+}
+.buttons-wrapper {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+.btn {
+    margin-bottom: 3px;
+    width: 49%;
+}
