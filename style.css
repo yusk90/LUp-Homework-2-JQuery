@@ -4,12 +4,11 @@ p {
 input {
     margin-bottom: 5px;
 }
-.error,
-#container.error {
+.error {
     background: rgba(255, 0, 0, 0.1);
     border: 2px solid rgba(255, 0, 0, 0.49);
 }
-#container {
+.data-container {
     margin-bottom: 15px;
     max-width: 400px;
     height: 150px;

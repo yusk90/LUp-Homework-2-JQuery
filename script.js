@@ -2,43 +2,34 @@ $(function() {
     var $form = $('#form'),
         $formWrapper = $('#form-wrapper'),
         $formInputList = $form.find(':text'),
-        $container = $('#container'),
+        $container = $('#data-container'),
         $buttonsWrapper = $('#buttons-wrapper'),
-        buttonsData = {};
-
-    buttonsData.addClass = addClass;
-    buttonsData.removeClass = removeClass;
-    buttonsData.addTextNode = addTextNode;
-    buttonsData.emptyContainer = emptyContainer;
-    buttonsData.addElement = addElement;
-    buttonsData.removeElement = removeElement;
-    buttonsData.serializeAndShow = serializeAndShow;
+        buttonsData = {
+            addClass: addClass,
+            removeClass: removeClass,
+            addTextNode: addTextNode,
+            emptyContainer: emptyContainer,
+            addElement: addElement,
+            removeElement: removeElement,
+            serializeAndShow: serializeAndShow
+        };
 
     //form validation
     $form.on('submit', function (e) {
         e.preventDefault();
 
         $formInputList.each(function() {
-            var currentInput = $(this),
+            var $currentInput = $(this),
                 errorClass = 'error';
 
-            if (currentInput.val() === '') {
-                if (currentInput.hasClass(errorClass)) {
-                    return;
-                }
-                currentInput.addClass(errorClass);
-            } else {
-                currentInput.removeClass(errorClass);
-            }
+            $currentInput.toggleClass(errorClass, !$currentInput.val());
         });
     });
 
     function addClass() {
         var classNameToAdd = prompt('Class name to add:');
 
-        if (classNameToAdd !== ''
-            && classNameToAdd !== null
-            && !($container.hasClass(classNameToAdd))) {
+        if (classNameToAdd) {
             $container.addClass(classNameToAdd);
         }
     }
@@ -46,7 +37,7 @@ $(function() {
     function removeClass() {
         var classNameToRemove = prompt('Class name to remove:');
 
-        if (classNameToRemove !== '' && $container.hasClass(classNameToRemove)) {
+        if (classNameToRemove) {
             $container.removeClass(classNameToRemove);
         }
     }
@@ -54,35 +45,33 @@ $(function() {
     function addTextNode() {
         var userInputText = prompt('Enter text:');
 
-        if (userInputText !== null && userInputText !== '') {
+        if (userInputText) {
             $container.append('<p>' + userInputText + '</p>');
         }
     }
 
     function emptyContainer() {
-        var userResponse = confirm('Delete all content from container?');
-        if (userResponse) {
-            $container.html('');
-        }
+        confirm('Delete all content from container?') && $container.html('');
     }
 
     function addElement() {
-        var userInputElement,
+        var userInputElementClass,
             userInputElementId,
-            userInputElementClass,
+            userInputElement,
             $elem;
 
         userInputElement = prompt('Element name to add:');
-        if (userInputElement !== '' && userInputElement !== null) {
+
+        if (userInputElement) {
             $elem = $('<' + userInputElement + '>');
 
             userInputElementId = prompt('ID');
-            if (userInputElementId !== '' && userInputElementId !== null) {
+            if (userInputElementId) {
                 $elem.attr('id', userInputElementId);
             }
 
             userInputElementClass = prompt('Class');
-            if (userInputElementClass !== '' && userInputElementClass !== null) {
+            if (userInputElementClass) {
                 $elem.addClass(userInputElementClass);
             }
 
@@ -93,8 +82,8 @@ $(function() {
     function removeElement() {
         var elementToRemove = prompt('Selector to remove:');
 
-        if (elementToRemove !== '' && elementToRemove !== null) {
-            if ($container.has(elementToRemove).length > 0) {
+        if (elementToRemove) {
+            if ($container.has(elementToRemove).length) {
                 $container.find(elementToRemove).remove();
             }
         }
@@ -102,40 +91,39 @@ $(function() {
 
     function serializeAndShow() {
         var $existingTable = $('#table-1'),
-            $table,
-            $tbody,
+            $table = $('<table>'),
+            $tbody = $('<tbody>'),
             $tr;
 
-        if ($existingTable.length > 0) {
+        if ($existingTable.length) {
             $existingTable.remove();
         }
 
-        $table = $('<table>');
         $table.attr({
             id: 'table-1',
             'class': 'table table-responsive'
         });
 
-        $tbody = $('<tbody>');
         $table.append($tbody);
 
         $formInputList.each(function() {
+            var $currentElement = $(this);
+
             $tr = $('<tr>');
-            $tr.append('<td>' + $(this).attr('id') + '</td>');
-            $tr.append('<td>' + $(this).val() + '</td>');
+            $tr.append('<td>' + $currentElement.attr('id') + '</td>');
+            $tr.append('<td>' + $currentElement.val() + '</td>');
             $tbody.append($tr);
         });
 
         $formWrapper.append($table);
-
     }
 
     $buttonsWrapper.on('click', function (e) {
-        var $target = e.target;
+        var $target = $(e.target);
         e.preventDefault();
 
-        if ($target.value) {
-            buttonsData[$target.value]();
+        if ($target.text()) {
+            buttonsData[$target.text()]();
         }
     });
 });
