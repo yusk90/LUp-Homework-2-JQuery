@@ -18,25 +18,28 @@ table {
     border-collapse: collapse;
     margin-bottom: 5px;
 }
-table td {
+.table > tbody > tr > td {
     font-size: 1.2em;
-    border: 1px solid #98bf21;
+    border: 1px solid #ccc;
     padding: 3px 7px 2px 7px;
 }
 table tr:nth-child(2n) {
     color: #000;
-    background-color: #EAF2D3;
+    background-color: #eaeaea;
 }
 .form-wrapper {
     margin: 15px auto;
     max-width: 400px;
+}
+.form-wrapper table {
+    margin-top: 20px;
 }
 .buttons-wrapper {
     text-align: center;
     max-width: 400px;
     margin: 0 auto 20px;
 }
-.btn {
+.buttons-wrapper .btn {
     margin-bottom: 3px;
     width: 49%;
 }

@@ -4,45 +4,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="utils.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div id="form-wrapper" class="form-wrapper">
-                    <form action="#" id="form">
-                        <div class="form-group">
-                            <label for="first-name">First Name</label>
-                            <input class="form-control" id="first-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="last-name">Last Name</label>
-                            <input class="form-control" id="last-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="city">City</label>
-                            <input class="form-control" id="city">
-                        </div>
-                        <input class="btn btn-primary btn-block" type="submit" id="submit" value="Submit">
-                    </form>
-                </div>
-                <div id="data-container"
-                     class="data-container form-control center-block"></div>
-                <div id="buttons-wrapper" class="buttons-wrapper clearfix">
-                    <button class="btn btn-primary">addClass</button>
-                    <button class="btn btn-primary">removeClass</button>
-                    <button class="btn btn-primary">addTextNode</button>
-                    <button class="btn btn-primary">emptyContainer</button>
-                    <button class="btn btn-primary">addElement</button>
-                    <button class="btn btn-primary">removeElement</button>
-                    <button class="btn btn-primary">serializeAndShow</button>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="form-wrapper" class="form-wrapper">
+                <form action="#" id="form" class="form">
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input class="form-control" id="first-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input class="form-control" id="last-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input class="form-control" id="city">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+            <div id="data-container"
+                 class="data-container form-control center-block well"></div>
+            <div id="buttons-wrapper" class="buttons-wrapper clearfix">
+                <button class="btn btn-primary">addClass</button>
+                <button class="btn btn-primary">removeClass</button>
+                <button class="btn btn-primary">addTextNode</button>
+                <button class="btn btn-primary">emptyContainer</button>
+                <button class="btn btn-primary">addElement</button>
+                <button class="btn btn-primary">removeElement</button>
+                <button class="btn btn-primary">serializeAndShow</button>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
